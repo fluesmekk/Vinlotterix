@@ -20,12 +20,14 @@
         }
 
         div.page {
+            padding-top: 4px;
+            padding-left: 4px;
             display: grid;
             height: 100vh;
             grid-template-columns: 200px 2fr;
             grid-template-rows: 40px 1fr;
-            grid-template-areas: 'meny header' 
-                                 'meny innhold';
+            grid-template-areas: 'meny header' 'meny innhold';
+            background-color: rgb(250, 250, 250);
         }
 
         div.pageUtenMeny {
@@ -38,7 +40,6 @@
 
         div.innhold {
             grid-area: innhold;
-            background-color: rgb(250, 250, 250);
         }
 
         div.header {
@@ -75,13 +76,13 @@
             color: rgb(250, 250, 250);
         }
 
-        button.fixed {
-            padding-left: 8%;
-            padding-top: 2%;
-            margin-top: 4%;
-            margin-left: 3%;
-            width: 80%;
-        }
+            button.fixed {
+                padding-left: 8%;
+                padding-top: 2%;
+                margin-top: 4%;
+                margin-left: 3%;
+                width: 80%;
+            }
     </style>
 </head>
 <body>
@@ -91,49 +92,59 @@
         <div class="meny" id="meny">
             <button class="fixed" onclick="visPersoner()">Personer</button><br />
             <button class="fixed" onclick="visVinnere()">Vinnere</button><br />
-            <button class="fixed" >Om</button><br />
+            <button class="fixed">Om</button><br />
             <button class="fixed">Exit</button><br />
         </div>
     </div>
-<script>
+    <script>
 
-    visPersoner();
+        visPersoner();
 
-    function visOgSkjulMeny() {
-        document.getElementById('page').classList.toggle('pageUtenMeny');
-        document.getElementById('meny').classList.toggle('hidden');
-        //document.getElementById('meny').innerHTML = '';
-    }
+        function visOgSkjulMeny() {
+            document.getElementById('page').classList.toggle('pageUtenMeny');
+            document.getElementById('meny').classList.toggle('hidden');
+        }
 
-    function visMeny() {
+        function visMeny() {
 
-    }
+        }
 
-    function visPersoner() {
-        document.getElementById('innhold').innerHTML = `
-                    <table>
-                        <tr><td><input type="checkbox"/></td><td>Personer</td><td>+</td><td>✎</td></tr>
-                        <tr><td><input type="checkbox" checked/></td><td>Per</td><td>☒</td></tr>
-                        <tr><td><input type="checkbox" checked/></td><td>Pål</td><td>☒</td></tr>
-                        <tr><td><input type="checkbox"/></td><td>Espen</td><td>☒</td></tr>
-                        <tr><td><input type="checkbox" checked/></td><td>Ole</td><td>☒</td></tr>
-                        <tr><td colspan="4"><button>Trekk!</button> <input type="text" size="1" value="1"/>
-                            <button>▲</button>
-                            <button>▼</button></td></tr>
-                    </table>
-                    `;
-    }
+        function visPersoner() {
+            document.getElementById('innhold').innerHTML = `
+                        <table>
+                            <tr><td><input type="checkbox"/></td><td>Personer</td><td>+</td><td>✎</td></tr>
+                            <tr><td><input type="checkbox" checked/></td><td>Per</td><td onclick="visPersonerMinusPer()">☒</td></tr>
+                            <tr><td><input type="checkbox" checked/></td><td>Pål</td><td>☒</td></tr>
+                            <tr><td><input type="checkbox"/></td><td>Espen</td><td>☒</td></tr>
+                            <tr><td><input type="checkbox" checked/></td><td>Ole</td><td>☒</td></tr>
+                            <tr><td colspan="4"><button>Trekk!</button> <input type="text" size="1" value="1"/>
+                                <button>▲</button>
+                                <button>▼</button></td></tr>
+                        </table>
+                        `;
+        }
 
-    function screen2() {
-        document.getElementById('page').innerHTML = `
-                                    <div class="screen">
-                                        <span>☰ Vinlotterix 🍷</span><br/>
-                                        <small>onsdag 17.10.18</small><br/>
-                                        <b>Vinneren er Ole!</b><br/>
-                                        <small>Trukket fra totalt 3 personer: Per, Pål og Ole</small>
-                                    </div>
-                                    `;
-    }
-</script>
+        function visPersonerMinusPer() {
+            document.getElementById('innhold').innerHTML = `
+                        <table>
+                            <tr><td><input type="checkbox"/></td><td>Personer</td><td>+</td><td>✎</td></tr>
+                            <tr><td><input type="checkbox" checked/></td><td>Pål</td><td>☒</td></tr>
+                            <tr><td><input type="checkbox"/></td><td>Espen</td><td>☒</td></tr>
+                            <tr><td><input type="checkbox" checked/></td><td>Ole</td><td>☒</td></tr>
+                            <tr><td colspan="4"><button>Trekk!</button> <input type="text" size="1" value="1"/>
+                                <button>▲</button>
+                                <button>▼</button></td></tr>
+                        </table>
+                        `;
+        }
+
+        function visVinnere() {
+            document.getElementById('innhold').innerHTML = `
+                                            <small>onsdag 17.10.18</small><br/>
+                                            <b>Vinneren er Ole!</b><br/>
+                                            <small>Trukket fra totalt 3 personer: Per, Pål og Ole</small>
+                                        `;
+        }
+    </script>
 </body>
 </html>
