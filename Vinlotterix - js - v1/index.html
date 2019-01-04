@@ -46,9 +46,13 @@
             grid-area: header;
         }
 
+        div.header, div.innhold {
+            padding-left: 6px;
+            padding-top: 8px;
+        }
+
         div.menu {
-            height: 100%;
-            padding-right: 4px;
+            height: 100%;            
         }
 
         div.hidden {
@@ -91,7 +95,7 @@
         <div class="innhold" id="innhold"></div>
         <div class="meny" id="meny">
             <button class="fixed" onclick="visPersoner()">Personer</button><br />
-            <button class="fixed" onclick="visVinnere()">Vinnere</button><br />
+            <button class="fixed" onclick="visVinnere1()">Vinnere</button><br />
             <button class="fixed">Om</button><br />
             <button class="fixed">Exit</button><br />
         </div>
@@ -105,10 +109,6 @@
             document.getElementById('meny').classList.toggle('hidden');
         }
 
-        function visMeny() {
-
-        }
-
         function visPersoner() {
             document.getElementById('innhold').innerHTML = `
                         <table>
@@ -117,7 +117,7 @@
                             <tr><td><input type="checkbox" checked/></td><td>Pål</td><td>☒</td></tr>
                             <tr><td><input type="checkbox"/></td><td>Espen</td><td>☒</td></tr>
                             <tr><td><input type="checkbox" checked/></td><td>Ole</td><td>☒</td></tr>
-                            <tr><td colspan="4"><button>Trekk!</button> <input type="text" size="1" value="1"/>
+                            <tr><td colspan="4"><button onclick="visVinnere2()">Trekk!</button> <input type="text" size="1" value="1"/>
                                 <button>▲</button>
                                 <button>▼</button></td></tr>
                         </table>
@@ -131,19 +131,36 @@
                             <tr><td><input type="checkbox" checked/></td><td>Pål</td><td>☒</td></tr>
                             <tr><td><input type="checkbox"/></td><td>Espen</td><td>☒</td></tr>
                             <tr><td><input type="checkbox" checked/></td><td>Ole</td><td>☒</td></tr>
-                            <tr><td colspan="4"><button>Trekk!</button> <input type="text" size="1" value="1"/>
+                            <tr><td colspan="4"><button onclick="visVinnere2()">Trekk!</button> <input type="text" size="1" value="1"/>
                                 <button>▲</button>
                                 <button>▼</button></td></tr>
                         </table>
                         `;
         }
 
-        function visVinnere() {
+        function visVinnere1() {
             document.getElementById('innhold').innerHTML = `
-                                            <small>onsdag 17.10.18</small><br/>
-                                            <b>Vinneren er Ole!</b><br/>
-                                            <small>Trukket fra totalt 3 personer: Per, Pål og Ole</small>
-                                        `;
+                <p>
+                    <small>onsdag 17.10.18</small><br/>
+                    <b>Vinneren er Ole!</b><br/>
+                    <small>Trukket fra totalt 3 personer: Per, Pål og Ole</small>
+                </p>
+                `;
+        }
+
+        function visVinnere2() {
+            document.getElementById('innhold').innerHTML = `
+                <p>
+                    <small>onsdag 31.10.18</small><br/>
+                    <b>Vinneren er Pål!</b><br/>
+                    <small>Trukket fra totalt 2 personer: Pål og Ole</small>
+                </p>
+                <p>
+                    <small>onsdag 17.10.18</small><br/>
+                    <b>Vinneren er Ole!</b><br/>
+                    <small>Trukket fra totalt 3 personer: Per, Pål og Ole</small>
+                </p>
+                `;
         }
     </script>
 </body>
