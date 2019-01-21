@@ -36,6 +36,7 @@
 
         div.meny {
             grid-area: meny;
+            overflow: hidden;
         }
 
         div.innhold {
@@ -53,10 +54,6 @@
 
         div.menu {
             height: 100%;            
-        }
-
-        div.hidden {
-            display: none;
         }
 
         div.screen {
@@ -106,7 +103,6 @@
 
         function visOgSkjulMeny() {
             document.getElementById('page').classList.toggle('pageUtenMeny');
-            document.getElementById('meny').classList.toggle('hidden');
         }
 
         function visPersoner() {
