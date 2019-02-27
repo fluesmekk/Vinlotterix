@@ -6,9 +6,10 @@ const dagsNavn = [
 
 function visTrekninger() {
   let html = '';
+  let cssClass = 'førsteTrekning';
   for (let trekning of model.trekninger) {
     const tid = new Date(trekning.tid);
-    const datoTekst = tid.toLocaleString().replace(',', '').substr(0, 16);
+    const datoTekst = lagDatoTekstForVisning(tid);
     const ukedag = dagsNavn[tid.getDay()];
     const vinnere = trekning.vinnere;
     const deltakere = trekning.deltakere;
@@ -17,9 +18,10 @@ function visTrekninger() {
     html +=
       `<p>
           <small>${ukedag} ${datoTekst}</small><br/>
-          <b>${vinnerOrd} er ${lagTekstListe(vinnere)}!</b><br/>
+          <b class="${cssClass}">${vinnerOrd} er ${lagTekstListe(vinnere)}!</b><br/>
           <small>Trukket fra totalt ${deltakere.length} personer: ${lagTekstListe(deltakere)}</small>
       </p>`;
+    cssClass = '';
   }
   document.getElementById('innhold').innerHTML = html;
 }

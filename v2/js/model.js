@@ -1,6 +1,7 @@
 ﻿var model = {
   personer: {
     velgAlle: false,
+    trekkAntall: 1,
     liste: [
       { id: 100, navn: 'Per', erValgt: true },
       { id: 101, navn: 'Pål', erValgt: true },
