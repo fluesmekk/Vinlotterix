@@ -30,7 +30,7 @@ function visPersoner() {
            <tr>
               <td colspan="3">
                 <button class="knapp" onclick="trekk()">Trekk!</button>
-                <input type="text" size="1" value="${model.personer.trekkAntall}"/>
+                <input type="number" size="1" value="${model.personer.trekkAntall} onchange="model.personer.trekkAntall = parseInt(this.value)"/>
                 <button class="" onclick="justerAntall(1)">▲</button>
                 <button class="" onclick="justerAntall(-1)">▼</button>
               </td>
@@ -49,8 +49,6 @@ function velgAlleEllerIngen(alle) {
   for (let person of model.personer.liste) {
     person.erValgt = alle;
   }
-  console.log(alle);
-  console.log(model.personer);
   visPersoner();
 }
 
@@ -86,7 +84,7 @@ function trekk() {
   model.trekninger.unshift({
     vinnere: vinnere,
     tid: lagDatoTekstNåForLagring(),
-    deltakere: ['Per', 'Pål', 'Ole']
+    deltakere: personerListe.filter(p => p.navn)
   });
   visTrekninger();
 }

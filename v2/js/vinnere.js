@@ -1,3 +1,4 @@
+// view
 const dagsNavn = [
   'søndag', 'mandag', 'tirsdag',
   'onsdag', 'torsdag', 'fredag',
