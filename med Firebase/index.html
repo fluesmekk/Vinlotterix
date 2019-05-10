@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="css/vinlotterix.css" />
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyBiTfEmllm_iQ6OTjlWwWpmwY-p_kY5Vks",
+            authDomain: "vinlotterix.firebaseapp.com",
+            databaseURL: "https://vinlotterix.firebaseio.com",
+            projectId: "vinlotterix",
+            storageBucket: "vinlotterix.appspot.com",
+            messagingSenderId: "14486746070",
+            appId: "1:14486746070:web:0af33fb018e95ee9"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+    </script>
+    <script src="js/model.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/personer.js"></script>
+    <script src="js/vinnere.js"></script>
+
+</head>
+<body>
+    <div class="page" id="page">
+        <div class="header" id="header">
+            <button class="knapp" onclick="visOgSkjulMeny()">☰</button> Vinlotterix 🍷
+        </div>
+        <div class="innhold" id="innhold"></div>
+        <div class="meny" id="meny">
+            <button class="knapp fixed" onclick="visPersoner()">Personer</button><br />
+            <button class="knapp fixed" onclick="visTrekninger()">Vinnere</button><br />
+        </div>
+    </div>
+<script>
+    hentDataFraFirestore();
+
+    function visOgSkjulMeny() {
+        document.getElementById('page').classList.toggle('pageUtenMeny');
+    }
+</script>
+</body>
+</html>
