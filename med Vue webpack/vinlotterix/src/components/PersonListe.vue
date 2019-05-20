@@ -46,44 +46,40 @@ export default {
   name: "PersonListe",
   data() {
     return {
-      props: ["personerProp"],
-      data: function() {
-        return {
-          nyPerson: "",
-          velgAlle: false,
-          trekkAntall: 1,
-          liste: []
-        };
-      },
-      created: function() {
-        this.liste.push(...this.personerProp);
-      },
-      methods: {
-        velgAlleEllerIngen: function() {
-          let verdi = !this.velgAlle;
-          for (let person of this.liste) {
-            person.erValgt = verdi;
-          }
-        },
-        slettPerson: function(id) {
-          let index = this.liste.findIndex(p => p.id === id);
-          if (index == -1) return;
-          this.liste.splice(index, 1);
-          this.$emit("oppdatert-personliste", this.liste);
-        },
-        leggTilPerson: function() {
-          const id =
-            this.liste
-              .map(p => p.id)
-              .reduce((max, value) => Math.max(max, value), -1) + 1;
-          this.liste.push({ id: id, navn: this.nyPerson, erValgt: true });
-          this.nyPerson = "";
-          this.$emit("oppdatert-personliste", this.liste);
-        },
-        trekk: function() {
-          this.$emit("trekk", this.trekkAntall);
-        }
+      nyPerson: "",
+      velgAlle: false,
+      trekkAntall: 1,
+      liste: []
+    };
+  },
+  props: ["personerProp"],
+  created: function() {
+    this.liste.push(...this.personerProp);
+  },
+  methods: {
+    velgAlleEllerIngen: function() {
+      let verdi = !this.velgAlle;
+      for (let person of this.liste) {
+        person.erValgt = verdi;
       }
+    },
+    slettPerson: function(id) {
+      let index = this.liste.findIndex(p => p.id === id);
+      if (index == -1) return;
+      this.liste.splice(index, 1);
+      this.$emit("oppdatert-personliste", this.liste);
+    },
+    leggTilPerson: function() {
+      const id =
+        this.liste
+          .map(p => p.id)
+          .reduce((max, value) => Math.max(max, value), -1) + 1;
+      this.liste.push({ id: id, navn: this.nyPerson, erValgt: true });
+      this.nyPerson = "";
+      this.$emit("oppdatert-personliste", this.liste);
+    },
+    trekk: function() {
+      this.$emit("trekk", this.trekkAntall);
     }
   }
 };

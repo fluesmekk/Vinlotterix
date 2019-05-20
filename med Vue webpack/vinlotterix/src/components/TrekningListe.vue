@@ -22,46 +22,42 @@
 <script>
 export default {
   name: "TrekningListe",
+  props: ["trekningerProp"],
   data() {
     return {
-      props: ["trekningerProp"],
-      data: function() {
-        return {
-          trekninger: [],
-          dagsNavn: [
-            "søndag",
-            "mandag",
-            "tirsdag",
-            "onsdag",
-            "torsdag",
-            "fredag",
-            "lørdag"
-          ]
-        };
-      },
-      created: function() {
-        this.trekninger.push(...this.trekningerProp);
-      },
-      methods: {
-        lagDatoTekstForVisning: function(dato) {
-          return dato
-            .toLocaleString()
-            .replace(",", "")
-            .substr(0, 15);
-        },
-        lagTekstListe: function(liste) {
-          if (liste.length === 0) return "";
-          if (liste.length === 1) return liste[0];
+      trekninger: [],
+      dagsNavn: [
+        "søndag",
+        "mandag",
+        "tirsdag",
+        "onsdag",
+        "torsdag",
+        "fredag",
+        "lørdag"
+      ]
+    };
+  },
+  created: function() {
+    this.trekninger.push(...this.trekningerProp);
+  },
+  methods: {
+    lagDatoTekstForVisning: function(dato) {
+      return dato
+        .toLocaleString()
+        .replace(",", "")
+        .substr(0, 15);
+    },
+    lagTekstListe: function(liste) {
+      if (liste.length === 0) return "";
+      if (liste.length === 1) return liste[0];
 
-          const tekstListe = liste.join(", ");
-          const indexSisteKomma = tekstListe.lastIndexOf(",");
-          return (
-            tekstListe.substr(0, indexSisteKomma) +
-            " og " +
-            tekstListe.substr(indexSisteKomma + 1)
-          );
-        }
-      }
+      const tekstListe = liste.join(", ");
+      const indexSisteKomma = tekstListe.lastIndexOf(",");
+      return (
+        tekstListe.substr(0, indexSisteKomma) +
+        " og " +
+        tekstListe.substr(indexSisteKomma + 1)
+      );
     }
   }
 };
