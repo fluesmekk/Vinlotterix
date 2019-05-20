@@ -4,11 +4,11 @@
       <div class="header" id="header">
         <button @click="visOgSkjulMeny" class="knapp">☰</button> Vinlotterix 🍷
       </div>
-      <router-view class="innhold"/>
+      <router-view class="innhold" :personer-prop="personer" :trekning-prop="trekninger"/>
       <div v-if="showMenu" class="meny" id="meny">
-        <button class="knapp fixed" @click="currentPage = 'personer'">Personer</button>
+        <button class="knapp fixed" @click="$router.push('/')">Personer</button>
         <br>
-        <button class="knapp fixed" @click="currentPage = 'trekninger'">Trekninger</button>
+        <button class="knapp fixed" @click="$router.push('/trekninger')">Trekninger</button>
         <br>
       </div>
     </div>

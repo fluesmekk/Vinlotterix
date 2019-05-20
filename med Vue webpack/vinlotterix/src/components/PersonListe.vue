@@ -54,7 +54,10 @@ export default {
   },
   props: ["personerProp"],
   created: function() {
-    this.liste.push(...this.personerProp);
+      console.log(this.personerProp);
+    for (let p of this.personerProp) {
+      this.liste.push(p);
+    }
   },
   methods: {
     velgAlleEllerIngen: function() {
