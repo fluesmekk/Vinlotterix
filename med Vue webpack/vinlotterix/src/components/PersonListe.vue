@@ -54,7 +54,6 @@ export default {
   },
   props: ["personerProp"],
   created: function() {
-      console.log(this.personerProp);
     for (let p of this.personerProp) {
       this.liste.push(p);
     }

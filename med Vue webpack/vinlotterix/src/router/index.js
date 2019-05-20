@@ -14,7 +14,7 @@ export default new Router({
       props: true
     },
     {
-      path: '/Trekning',
+      path: '/trekninger',
       name: 'TrekningListe',
       component: TrekningListe,
       props: true

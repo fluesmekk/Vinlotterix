@@ -38,7 +38,9 @@ export default {
     };
   },
   created: function() {
-    this.trekninger.push(...this.trekningerProp);
+    for (let t of this.trekningerProp) {
+      this.trekninger.push(t);
+    }
   },
   methods: {
     lagDatoTekstForVisning: function(dato) {

@@ -4,7 +4,7 @@
       <div class="header" id="header">
         <button @click="visOgSkjulMeny" class="knapp">☰</button> Vinlotterix 🍷
       </div>
-      <router-view class="innhold" :personer-prop="personer" :trekning-prop="trekninger"/>
+      <router-view class="innhold" :personer-prop="personer" :trekninger-prop="trekninger"/>
       <div v-if="showMenu" class="meny" id="meny">
         <button class="knapp fixed" @click="$router.push('/')">Personer</button>
         <br>
