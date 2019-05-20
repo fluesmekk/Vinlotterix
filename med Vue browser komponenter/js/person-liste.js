@@ -6,7 +6,7 @@
             velgAlle: false,
             trekkAntall: 1,
             liste: []
-        }
+        };
     },
     created: function () {
         this.liste.push(...this.personerProp);
@@ -28,11 +28,12 @@
             const id = this.liste
                 .map(p => p.id).reduce((max, value) => Math.max(max, value), -1) + 1;
             this.liste
-                .push({ id: id, navn: this.personer.nyPerson, erValgt: true });
+                .push({ id: id, navn: this.nyPerson, erValgt: true });
+            this.nyPerson = '';
             this.$emit('oppdatert-personliste', this.liste);
         },
         trekk: function () {
-            this.$emit('trekk', { antall: this.trekkAntall, personer: this.liste });
+            this.$emit('trekk', this.trekkAntall);
         }
     },
     template: `<div class="innhold" id="innhold">

@@ -60,11 +60,8 @@
                 lagDatoTekstNåForLagring: function () {
                     return this.lagDatoTekstForLagring(new Date());
                 },
-                trekk: function (data) {
-                    console.log('trekk', data);
-                    return;
-                    let antall = this.personer.trekkAntall;
-                    const personerListe = this.personer.liste.filter(p => p.erValgt);
+                trekk: function (antall) {
+                    const personerListe = this.personer.filter(p => p.erValgt);
                     const indekser = Array.from(personerListe.keys());
                     const vinnere = [];
                     while (antall-- > 0 && indekser.length > 0) {
