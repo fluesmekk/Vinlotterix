@@ -1,1 +1,1 @@
-https://getacademy.github.io/Vinlotterix/v2/index.html
+https://getacademy.github.io/Vinlotterix/med%20Vue%20browser%20komponenter/index.html
