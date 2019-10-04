@@ -43,7 +43,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/Vinlotterix/med%20Vue%20webpack/vinlotterix/',
+    assetsPublicPath: './',
 
     /**
      * Source Maps
