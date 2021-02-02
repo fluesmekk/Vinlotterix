@@ -1,6 +1,8 @@
 ﻿// view
 function visPersoner() {
-  let html = `<table>
+  document.getElementById('innhold').innerHTML = '';
+  let html = '';
+  html = `<table>
                 <tr>
                   <td><input type="checkbox"
                              onclick="velgAlleEllerIngen(this.checked)"
@@ -13,10 +15,10 @@ function visPersoner() {
   for (let person of model.personer.liste) {
     html += `<tr>
                 <td><input type="checkbox"
-                           onclick="velgPerson(${person.id})" 
+                           onclick="velgPerson('${person.id}')" 
                            ${lagHtmlChecked(person.erValgt)}"/></td>
                 <td>${person.navn}</td>
-                <td><button class="litenKnapp"  onclick="slettPerson(${person.id})">x</button></td>
+                <td><button class="litenKnapp"  onclick="slettPerson('${person.id}')">x</button></td>
               </tr>`;
   }
   html += `<tr>
@@ -54,25 +56,44 @@ function velgAlleEllerIngen(alle) {
 
 function leggTilPerson() {
   const navn = document.getElementById('nyPerson').value;
-  const id = model.personer.liste.map(p => p.id).reduce((max, value) => Math.max(max, value), -1) + 1;
-  model.personer.liste.push(
-    { id: id, navn: navn, erValgt: true });
-  visPersoner();
+  db.collection('personer').add({
+    navn: navn,
+    erValgt: false,
+  })
+  drawModel();
+
 }
 
 function velgPerson(id) {
-  const person = finnPerson(id);
-  person.erValgt = !person.erValgt;
-  visPersoner();
+  for (personer of model.personer.liste) {
+    if (personer.id == id) {
+      if (personer.erValgt == true) {
+        console.log(id)
+        db.collection('personer').doc(id).update({
+          erValgt: false
+        })
+      } else {
+        db.collection('personer').doc(id).update({
+          erValgt: true
+        })
+      }
+      
+      
+    }
+  }
+  drawModel()
 }
 
 function slettPerson(id) {
-  model.personer.liste = model.personer.liste.filter(p => p.id !== id);
-  visPersoner();
+  db.collection('personer').doc(id).delete();
+  drawModel();
 }
 
+
 function trekk() {
+  
   let antall = model.personer.trekkAntall;
+  console.log(antall)
   const personerListe = model.personer.liste.filter(p => p.erValgt);
   const indekser = Array.from(personerListe.keys());
   const vinnere = [];
@@ -81,13 +102,15 @@ function trekk() {
     const indeks = indekser.splice(tilfeldigIndeks, 1);
     vinnere.push(personerListe[indeks].navn);
   }
-  model.trekninger.unshift({
+  db.collection('trekninger').add({
     vinnere: vinnere,
-    tid: lagDatoTekstNåForLagring(),
+    tid: new Date(),
     deltakere: personerListe.map(p => p.navn)
-  });
-  visTrekninger();
+  })
+  drawModelDraws()
+  visTrekninger()
 }
+
 
 function justerAntall(delta) {
   model.personer.trekkAntall =

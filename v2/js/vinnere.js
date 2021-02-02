@@ -1,17 +1,18 @@
 // view
 const dagsNavn = [
-  'søndag', 'mandag', 'tirsdag',
+  'sï¿½ndag', 'mandag', 'tirsdag',
   'onsdag', 'torsdag', 'fredag',
-  'lørdag'
+  'lï¿½rdag'
 ];
 
 function visTrekninger() {
   let html = '';
-  let cssClass = 'førsteTrekning';
+  let cssClass = 'fï¿½rsteTrekning';
   for (let trekning of model.trekninger) {
-    const tid = new Date(trekning.tid);
+    const tid = new Date(trekning.tid.seconds * 1000);
     const datoTekst = lagDatoTekstForVisning(tid);
     const ukedag = dagsNavn[tid.getDay()];
+    
     const vinnere = trekning.vinnere;
     const deltakere = trekning.deltakere;
     const vinnerOrd = vinnere.length === 1 ? 'Vinneren' : 'Vinnerne';
@@ -28,9 +29,9 @@ function visTrekninger() {
 }
 
 function lagTekstListe(liste) {
+  if (Array.isArray(liste) == false) return liste;
   if (liste.length === 0) return '';
   if (liste.length === 1) return liste[0];
-
   const tekstListe = liste.join(', ');
   const indexSisteKomma = tekstListe.lastIndexOf(',');
   return tekstListe.substr(0, indexSisteKomma)

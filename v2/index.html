@@ -1,13 +1,35 @@
 ﻿<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
     <link rel="stylesheet" href="css/vinlotterix.css" />
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-firestore.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCXT6CCCFnHAdgqXDCiYN-oJpfXfiouVHo",
+            authDomain: "vin-lotterix.firebaseapp.com",
+            projectId: "vin-lotterix",
+            storageBucket: "vin-lotterix.appspot.com",
+            messagingSenderId: "370361875878",
+            appId: "1:370361875878:web:0783d8f3c6b004e6c9a367"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <script>const db = firebase.firestore();</script>
     <script src="js/model.js"></script>
+    <script src="js/drawModel.js"></script>
+    
     <script src="js/common.js"></script>
     <script src="js/personer.js"></script>
     <script src="js/vinnere.js"></script>
+    
 </head>
+
 <body>
     <div class="page" id="page">
         <div class="header" id="header">
@@ -20,11 +42,18 @@
         </div>
     </div>
     <script>
-        visPersoner();
+        drawModel()
+        drawModelDraws();
 
-        function visOgSkjulMeny() {
-            document.getElementById('page').classList.toggle('pageUtenMeny');
-        }
+        
+        
+        // function visOgSkjulMeny() {
+        //     document.getElementById('page').classList.toggle('pageUtenMeny');
+        // }
     </script>
+
+
+
 </body>
+
 </html>
